@@ -1,20 +1,18 @@
 //  need to GRAB reference to THE HTML elements
 const formEl = document.getElementById('blog-form');
-const userInput = document.getElementById('username');
-const titleInput = document.getElementById('title');
-const contentInput = document.getElementById('content');
+const userEl = document.getElementById('username');
+const titleEl = document.getElementById('title');
+const contentEl = document.getElementById('content');
 
 
-// I want a button press to trigger when to capture the data
-
-formEl.addEventListener('submit', function(event) {
+formEl.addEventListener('submit', (event) => {
     event.preventDefault()
     console.log("Submitting...");
 
     // I want to capture data
-    let username = userInput.value
-    let title = titleInput.value
-    let content = contentInput.value;
+    let username = userEl.value
+    let title = titleEl.value
+    let content = contentEl.value;
 
     console.log(username, title, content)
 
