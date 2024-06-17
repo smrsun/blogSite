@@ -1,52 +1,29 @@
-//  need to GRAB reference to THE HTML elements
+// GRAB reference to THE HTML elements
 const formEl = document.getElementById('blog-form');
-const userEl = document.getElementById('username');
-const titleEl = document.getElementById('title');
-const contentEl = document.getElementById('content');
-
+let savedData = JSON.parse(localStorage.getItem('blogs')) || [];
 
 formEl.addEventListener('submit', (event) => {
-    event.preventDefault()
-    console.log("Submitting...");
+  event.preventDefault();
+  console.log('Submitting...');
 
-    // I want to capture data
-    let username = userEl.value
-    let title = titleEl.value
-    let content = contentEl.value;
+  // I want to capture data
+  let username = document.getElementById('username').value;
+  let title = document.getElementById('title').value;
+  let content = document.getElementById('content').value;
 
-    console.log(username, title, content)
+  // collect the important data
+  let tempBlog = {
+    username: username,
+    title: title,
+    content: content,
+  };
 
-    // collect the important data
-    let tempBlog = {
-        username: username,
-        title: title,
-        content: content
-    }
-    // store data (localStorage)
+  // add the new tempdata
+  savedData.push(tempBlog);
 
-    // check for existing saved data
-    let savedData = localStorage.getItem('blogs');
-    console.log("Local Storage: ", savedData);
-    console.log("Data Type: ", typeof savedData);
-    // if there is data we CONVERT (PARSE) it to JS
-    let savedArray = JSON.parse(savedData);
-    console.log("JS data: ", savedArray);
-    console.log("Data Type: ", typeof savedArray);
-    // We add the new tempdata
-    savedArray.push(tempBlog)
+  // write the new dataset(Array) to localStorage
+  localStorage.setItem('blogs', JSON.stringify(savedData));
 
-    console.log("Array: ", savedArray)
-    console.log("data type: ", typeof savedArray)
-
-    // we WRITE the new dataset(Array) to localStorage
-    localStorage.setItem('blogs', JSON.stringify(savedArray))
-  //  localStorage.setItem('blogs', [])
-
-   // const saved = {  // is JavaSrpit Object data Type
-   //     key: value
-   // }
-
-    // JSON data type --> { "key": "value", }   --> String Data type
-
-    // we want to redirect to new page
-})
+  // redirect to new page
+  window.location.href = './blog.html';
+});
