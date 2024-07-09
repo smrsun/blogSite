@@ -16,5 +16,6 @@ To create a two-page website where users will input and view blog posts, includi
 
 [Link to Blog Site page](http://127.0.0.1:5500/blogSite/index.html)
 
+[Link to deployed repo](https://smrsun.github.io/blogSite/) 
 
-[Link to Github Repo Page](https://github.com/smrsun/)
+[Link to Github Repo Page](https://github.com/smrsun/blogSite)
